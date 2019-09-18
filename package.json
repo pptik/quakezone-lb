@@ -29,7 +29,8 @@
     "docker:run": "docker run -p 3000:3000 -d quakezone-lb",
     "migrate": "node ./dist/migrate",
     "prestart": "npm run build",
-    "start": "node -r source-map-support/register .",
+    "start": "cross-env PORT=3001 node -r source-map-support/register .",
+    "start:watch": "cross-env PORT=3001 tsc-watch --target es2017 --outDir ./dist --onSuccess \"node .\"",
     "prepublishOnly": "npm run test"
   },
   "repository": {
@@ -58,16 +59,18 @@
   },
   "devDependencies": {
     "@loopback/build": "^2.0.11",
-    "source-map-support": "^0.5.13",
+    "@loopback/eslint-config": "^4.1.0",
     "@loopback/testlab": "^1.8.1",
     "@types/node": "^10.14.18",
-    "@typescript-eslint/parser": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
-    "@loopback/eslint-config": "^4.1.0",
+    "@typescript-eslint/parser": "^2.3.0",
+    "cross-env": "^6.0.0",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-eslint-plugin": "^2.1.0",
     "eslint-plugin-mocha": "^6.1.1",
+    "source-map-support": "^0.5.13",
+    "tsc-watch": "^4.0.0",
     "typescript": "~3.6.3"
   }
 }
