@@ -69,6 +69,7 @@
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-eslint-plugin": "^2.1.0",
     "eslint-plugin-mocha": "^6.1.1",
+    "openapi-to-graphql-cli": "^1.6.0",
     "source-map-support": "^0.5.13",
     "tsc-watch": "^4.0.0",
     "typescript": "~3.6.3"

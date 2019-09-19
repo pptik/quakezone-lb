@@ -23,7 +23,7 @@ import {QuakeRepository} from '../repositories';
 export class QuakeController {
   constructor(
     @repository(QuakeRepository)
-    public quakeRepository : QuakeRepository,
+    public quakeRepository: QuakeRepository,
   ) {}
 
   @post('/quakes', {
@@ -40,7 +40,8 @@ export class QuakeController {
         'application/json': {
           schema: getModelSchemaRef(Quake, {
             title: 'NewQuake',
-            exclude: ['id'],
+            // https://github.com/IBM/openapi-to-graphql/issues/197#issuecomment-530234909
+            // exclude: ['id'],
           }),
         },
       },
@@ -77,7 +78,8 @@ export class QuakeController {
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Quake)) filter?: Filter<Quake>,
+    @param.query.object('filter', getFilterSchemaFor(Quake))
+    filter?: Filter<Quake>,
   ): Promise<Quake[]> {
     return this.quakeRepository.find(filter);
   }
