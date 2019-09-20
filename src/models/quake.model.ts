@@ -5,169 +5,253 @@ interface GeoPoint {
   coordinates: number[];
 }
 
-@model({
-  name: 'quake',
-  settings: {},
-})
+/**
+ * Quake
+ */
+@model({name: "quake", settings: {}})
 export class Quake extends Entity {
+
   /**
    * ID as MongoDB ObjectId
    */
   @property({
     id: true,
     type: 'string',
-    description: 'ID as MongoDB ObjectId',
+    description: "ID as MongoDB ObjectId"
   })
   id?: string;
-
+  
+  /**
+   * 
+   */
   @property({
     type: 'string',
     required: true,
   })
   name: string;
 
-  @property({
-    type: 'string',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  usgsId?: string;
-
-  @property({
-    type: 'string',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  usgsName?: string;
-
-  @property({
-    type: 'Date',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  originTime?: Date;
-
-  @property({
-    type: 'Date',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  usgsOriginTime?: Date;
-
-  @property({
-    type: 'Date',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  irisOriginTime?: Date;
-
-  @property({
-    type: 'string',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  noaaLocation?: string;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  noviantyRuptureDuration?: number;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  noviantyPWaveDominantPeriod?: number;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  noviantyT0xtd?: number;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  noviantyMw?: number;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  mw?: number;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  usgsMw?: number;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  irisMw?: number;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  noaaTsunamiId?: number;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  unknown1?: number;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  usgsDepth?: number;
-
-  @property({
-    type: 'string',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  collectionName?: string;
-
-  @property({
-    type: 'number',
-    required: false,
-    jsonSchema: {nullable: true},
-  })
-  collectionPos?: number;
-
   /**
-   * Epicenter location according to USGS.
+   * USGS ID
    */
   @property({
     type: 'string',
     required: false,
     jsonSchema: {nullable: true},
+    title: "USGS ID",
   })
-  usgsEpicenter?: string;
+  usgsId?: string;
 
+  /**
+   * USGS name
+   */
+  @property({
+    type: 'string',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "USGS name",
+  })
+  usgsName?: string;
+
+  /**
+   * Origin time
+   */
+  @property({
+    type: 'Date',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Origin time",
+  })
+  originTime?: Date;
+
+  /**
+   * Origin time (USGS)
+   */
+  @property({
+    type: 'Date',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Origin time (USGS)",
+  })
+  usgsOriginTime?: Date;
+
+  /**
+   * Origin time (IRIS)
+   */
+  @property({
+    type: 'Date',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Origin time (IRIS)",
+  })
+  irisOriginTime?: Date;
+
+  /**
+   * Location (NOAA)
+   */
+  @property({
+    type: 'string',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Location (NOAA)",
+  })
+  noaaLocation?: string;
+
+  /**
+   * Rupture duration (Novianty)
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Rupture duration (Novianty)",
+  })
+  noviantyRuptureDuration?: number;
+
+  /**
+   * P-wave dominant period (Novianty)
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "P-wave dominant period (Novianty)",
+  })
+  noviantyPWaveDominantPeriod?: number;
+
+  /**
+   * T0 × Td (Novianty)
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "T0 × Td (Novianty)",
+  })
+  noviantyT0xtd?: number;
+
+  /**
+   * Mw (Novianty)
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Mw (Novianty)",
+  })
+  noviantyMw?: number;
+
+  /**
+   * Mw
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Mw",
+  })
+  mw?: number;
+
+  /**
+   * Mw (USGS)
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Mw (USGS)",
+  })
+  usgsMw?: number;
+
+  /**
+   * Mw (IRIS)
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Mw (IRIS)",
+  })
+  irisMw?: number;
+
+  /**
+   * Tsunami potential (NOAA)
+   */
   @property({
     type: 'boolean',
     required: false,
     jsonSchema: {nullable: true},
+    title: "Tsunami potential (NOAA)",
   })
   noaaTsunami?: boolean;
+
+  /**
+   * NOAA tsunami ID
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "NOAA tsunami ID",
+  })
+  noaaTsunamiId?: number;
+
+  /**
+   * Unknown 1
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Unknown 1",
+  })
+  unknown1?: number;
+
+  /**
+   * Depth (USGS)
+   *
+   * Depth in kilometers.
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Depth (USGS)",
+    description: "Depth in kilometers.",
+  })
+  usgsDepth?: number;
+
+  /**
+   * Collection name
+   */
+  @property({
+    type: 'string',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Collection name",
+  })
+  collectionName?: string;
+
+  /**
+   * Collection pos
+   */
+  @property({
+    type: 'number',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Collection pos",
+  })
+  collectionPos?: number;
+
+  /**
+   * Epicenter (USGS)
+   */
+  @property({
+    type: 'string',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: "Epicenter (USGS)",
+  })
+  usgsEpicenter?: string;
 
   constructor(data?: Partial<Quake>) {
     super(data);
