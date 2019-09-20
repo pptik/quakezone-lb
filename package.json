@@ -31,6 +31,7 @@
     "prestart": "npm run build",
     "start": "cross-env PORT=3001 node -r source-map-support/register .",
     "start:watch": "cross-env PORT=3001 tsc-watch --target es2017 --outDir ./dist --onSuccess \"node .\"",
+    "graphql": "openapi-to-graphql --cors --port=3002 http://localhost:3001/openapi.json",
     "prepublishOnly": "npm run test"
   },
   "repository": {
