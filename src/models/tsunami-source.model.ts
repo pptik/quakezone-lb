@@ -871,7 +871,7 @@ export class TsunamiSource extends Entity {
   totalHousesDamagedDescription?: number;
 
   /**
-   * NOAA tsunami ID
+   * NOAA tsunami event ID
    *
    * Tsunami source event ID according to `noaa`: [NOAA NGDC/WDS](https://www.ngdc.noaa.gov/hazard/tsu_db.shtml).
    */
@@ -879,10 +879,10 @@ export class TsunamiSource extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "NOAA tsunami ID",
+    title: "NOAA tsunami event ID",
     description: "Tsunami source event ID according to `noaa`: [NOAA NGDC/WDS](https://www.ngdc.noaa.gov/hazard/tsu_db.shtml).",
   })
-  noaaTsunamiId?: number;
+  noaaTsunamiEventId?: number;
 
   /**
    * Information source
