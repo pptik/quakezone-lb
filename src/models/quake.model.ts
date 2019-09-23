@@ -8,21 +8,20 @@ interface GeoPoint {
 /**
  * Quake
  */
-@model({name: "quake", settings: {}})
+@model({name: 'quake', settings: {}})
 export class Quake extends Entity {
-
   /**
    * ID as MongoDB ObjectId
    */
   @property({
     id: true,
     type: 'string',
-    description: "ID as MongoDB ObjectId"
+    description: 'ID as MongoDB ObjectId',
   })
   id?: string;
-  
+
   /**
-   * 
+   *
    */
   @property({
     type: 'string',
@@ -37,7 +36,7 @@ export class Quake extends Entity {
     type: 'string',
     required: false,
     jsonSchema: {nullable: true},
-    title: "USGS ID",
+    title: 'USGS ID',
   })
   usgsId?: string;
 
@@ -48,7 +47,7 @@ export class Quake extends Entity {
     type: 'string',
     required: false,
     jsonSchema: {nullable: true},
-    title: "USGS name",
+    title: 'USGS name',
   })
   usgsName?: string;
 
@@ -59,7 +58,7 @@ export class Quake extends Entity {
     type: 'Date',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Origin time",
+    title: 'Origin time',
   })
   originTime?: Date;
 
@@ -70,7 +69,7 @@ export class Quake extends Entity {
     type: 'Date',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Origin time (USGS)",
+    title: 'Origin time (USGS)',
   })
   usgsOriginTime?: Date;
 
@@ -81,7 +80,7 @@ export class Quake extends Entity {
     type: 'Date',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Origin time (IRIS)",
+    title: 'Origin time (IRIS)',
   })
   irisOriginTime?: Date;
 
@@ -92,7 +91,7 @@ export class Quake extends Entity {
     type: 'string',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Location (NOAA)",
+    title: 'Location (NOAA)',
   })
   noaaLocation?: string;
 
@@ -103,7 +102,7 @@ export class Quake extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Rupture duration (Novianty)",
+    title: 'Rupture duration (Novianty)',
   })
   noviantyRuptureDuration?: number;
 
@@ -114,7 +113,7 @@ export class Quake extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "P-wave dominant period (Novianty)",
+    title: 'P-wave dominant period (Novianty)',
   })
   noviantyPWaveDominantPeriod?: number;
 
@@ -125,7 +124,7 @@ export class Quake extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "T0 × Td (Novianty)",
+    title: 'T0 × Td (Novianty)',
   })
   noviantyT0xtd?: number;
 
@@ -136,7 +135,7 @@ export class Quake extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Mw (Novianty)",
+    title: 'Mw (Novianty)',
   })
   noviantyMw?: number;
 
@@ -147,7 +146,7 @@ export class Quake extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Mw",
+    title: 'Mw',
   })
   mw?: number;
 
@@ -158,7 +157,7 @@ export class Quake extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Mw (USGS)",
+    title: 'Mw (USGS)',
   })
   usgsMw?: number;
 
@@ -169,7 +168,7 @@ export class Quake extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Mw (IRIS)",
+    title: 'Mw (IRIS)',
   })
   irisMw?: number;
 
@@ -180,20 +179,20 @@ export class Quake extends Entity {
     type: 'boolean',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Tsunami potential (NOAA)",
+    title: 'Tsunami potential (NOAA)',
   })
   noaaTsunami?: boolean;
 
   /**
-   * NOAA tsunami ID
+   * NOAA tsunami event ID
    */
   @property({
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "NOAA tsunami ID",
+    title: 'NOAA tsunami event ID',
   })
-  noaaTsunamiId?: number;
+  noaaTsunamiEventId?: number;
 
   /**
    * Unknown 1
@@ -202,7 +201,7 @@ export class Quake extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Unknown 1",
+    title: 'Unknown 1',
   })
   unknown1?: number;
 
@@ -215,8 +214,8 @@ export class Quake extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Depth (USGS)",
-    description: "Depth in kilometers.",
+    title: 'Depth (USGS)',
+    description: 'Depth in kilometers.',
   })
   usgsDepth?: number;
 
@@ -227,7 +226,7 @@ export class Quake extends Entity {
     type: 'string',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Collection name",
+    title: 'Collection name',
   })
   collectionName?: string;
 
@@ -238,7 +237,7 @@ export class Quake extends Entity {
     type: 'number',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Collection pos",
+    title: 'Collection pos',
   })
   collectionPos?: number;
 
@@ -246,12 +245,26 @@ export class Quake extends Entity {
    * Epicenter (USGS)
    */
   @property({
+    type: 'object',
+    required: false,
+    jsonSchema: {nullable: true},
+    title: 'Epicenter (USGS)',
+  })
+  usgsEpicenter?: GeoPoint;
+
+  /**
+   * Tsunami source ID
+   *
+   * Tsunami source ID in QuakeZone database.
+   */
+  @property({
     type: 'string',
     required: false,
     jsonSchema: {nullable: true},
-    title: "Epicenter (USGS)",
+    title: 'Tsunami source ID',
+    description: 'Tsunami source ID in QuakeZone database.',
   })
-  usgsEpicenter?: string;
+  tsunamiSourceId?: string;
 
   constructor(data?: Partial<Quake>) {
     super(data);
